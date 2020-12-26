@@ -1,0 +1,24 @@
+﻿#[FOLDERNAME]
+	pinfo.ucp // Contains Createdate,Grade,Lastopened,Currenttimetable,Lastfilepath
+	#resources
+		csubject.ucp // Contains all subjects
+		#table
+			[Currenttimetable].ucp
+			...
+		#prefablink
+			[Subjectname]_info.ucp // Contains fileformats to be created and coresponding prefab (optional)// Default is *.txt
+			...
+		#prefabs
+			#[subject]
+				[nameoffile].[fileformat] // User defined file to becopied
+				...
+		#homework
+		#appointments
+
+			...
+	#data
+		content.lst
+		#[date]_[name(_ as space)]
+			content.lst
+			info.ucp
+		...

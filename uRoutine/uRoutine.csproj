@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{80DE3B38-227A-4EF8-8502-4779DFB30535}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>User</RootNamespace>
+    <AssemblyName>routine</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>ucpsystemskey.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionWindow\Appointments\ucpcreateappointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActionWindow\Appointments\ucpcreateappointment.Designer.cs">
+      <DependentUpon>ucpcreateappointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ActionWindow\Appointments\ucpappointments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActionWindow\Appointments\ucpappointments.Designer.cs">
+      <DependentUpon>ucpappointments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ActionWindow\Board\ucpboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActionWindow\Board\ucpboard.Designer.cs">
+      <DependentUpon>ucpboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ActionWindow\Create\create.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActionWindow\Create\create.Designer.cs">
+      <DependentUpon>create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ActionWindow\Export\ucpexport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActionWindow\Export\ucpexport.Designer.cs">
+      <DependentUpon>ucpexport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ActionWindow\Lesson\ucplessondisp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ActionWindow\Lesson\ucplessondisp.Designer.cs">
+      <DependentUpon>ucplessondisp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ActionWindow\Open\ucpopen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActionWindow\Open\ucpopen.Designer.cs">
+      <DependentUpon>ucpopen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ActionWindow\Settings\ucpcreatep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActionWindow\Settings\ucpcreatep.Designer.cs">
+      <DependentUpon>ucpcreatep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ActionWindow\Settings\ucpsettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActionWindow\Settings\ucpsettings.Designer.cs">
+      <DependentUpon>ucpsettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ActionWindow\Subjects\ucpsubjects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActionWindow\Subjects\ucpsubjects.Designer.cs">
+      <DependentUpon>ucpsubjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ActionWindow\ucpactionwin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActionWindow\ucpactionwin.Designer.cs">
+      <DependentUpon>ucpactionwin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fonthandler.cs" />
+    <Compile Include="Messager\errorhandler.cs" />
+    <Compile Include="Messager\messager.cs" />
+    <Compile Include="Messager\ucpmessager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messager\ucpmessager.Designer.cs">
+      <DependentUpon>ucpmessager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Messager\ucpmessager.init.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messager\ucpmessager.process.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="publiccoord.cs" />
+    <Compile Include="systementry.cs" />
+    <Compile Include="ActionWindow\Lesson\ucplesson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActionWindow\Lesson\ucplesson.Designer.cs">
+      <DependentUpon>ucplesson.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ActionWindow\Appointments\ucpcreateappointment.resx">
+      <DependentUpon>ucpcreateappointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ActionWindow\Appointments\ucpappointments.resx">
+      <DependentUpon>ucpappointments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ActionWindow\Board\ucpboard.resx">
+      <DependentUpon>ucpboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ActionWindow\Create\create.resx">
+      <DependentUpon>create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ActionWindow\Export\ucpexport.resx">
+      <DependentUpon>ucpexport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ActionWindow\Lesson\ucplessondisp.resx">
+      <DependentUpon>ucplessondisp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ActionWindow\Open\ucpopen.resx">
+      <DependentUpon>ucpopen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ActionWindow\Settings\ucpcreatep.resx">
+      <DependentUpon>ucpcreatep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ActionWindow\Settings\ucpsettings.resx">
+      <DependentUpon>ucpsettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ActionWindow\Subjects\ucpsubjects.resx">
+      <DependentUpon>ucpsubjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ActionWindow\ucpactionwin.resx">
+      <DependentUpon>ucpactionwin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messager\ucpmessager.resx">
+      <DependentUpon>ucpmessager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ActionWindow\Lesson\ucplesson.resx">
+      <DependentUpon>ucplesson.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="ucpsystemskey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ucp_logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\uRuntime\uRuntime.csproj">
+      <Project>{08a12f36-070a-4fe8-acdd-3f886104fadc}</Project>
+      <Name>uRuntime</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\uSource\uSource.csproj">
+      <Project>{57010c36-3fd8-404b-9771-f4f8f53001a0}</Project>
+      <Name>uSource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\uString\uString.csproj">
+      <Project>{e0332961-1445-4a85-9db4-3c7a0f78e438}</Project>
+      <Name>uString</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\uStyle\uStyle.csproj">
+      <Project>{65b97e25-b94a-4420-a0af-e350a6a7ee48}</Project>
+      <Name>uStyle</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.2 %28x86 und x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+    <Content Include="ico.ico" />
+    <None Include="Routine_Icons\create.png" />
+    <None Include="Routine_Icons\homework.png" />
+    <None Include="Routine_Icons\all-lessons.png" />
+    <None Include="Routine_Icons\calendar.png" />
+    <None Include="Routine_Icons\settings.png" />
+    <None Include="Routine_Icons\share.png" />
+    <None Include="Routine_Icons\manager.png" />
+    <None Include="Routine_Icons\default.png" />
+    <None Include="Routine_Icons\default-32x32.png" />
+    <None Include="Routine_Icons\expired.png" />
+    <None Include="Routine_Icons\login.png" />
+    <None Include="Routine_Icons\markus-manager.png" />
+    <None Include="Routine_Icons\none.png" />
+    <None Include="Routine_Icons\urgend.png" />
+    <None Include="Routine_Icons\folder.png" />
+    <None Include="Routine_Icons\info.png" />
+    <None Include="Routine_Icons\delete.png" />
+    <None Include="Routine_Icons\edit.png" />
+    <None Include="Routine_Icons\adddexternal.png" />
+    <None Include="Routine_Icons\openinfolder.png" />
+    <None Include="Routine_Icons\deletelesson.png" />
+    <None Include="Routine_Icons\noise.png" />
+    <None Include="Routine_Icons\noise_h.png" />
+    <None Include="Routine_Icons\LOGO.png" />
+    <Content Include="structure.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
