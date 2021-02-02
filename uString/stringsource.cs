@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Source
+namespace User.Source
 {
     public static class u_Stringsource
     {
