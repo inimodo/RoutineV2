@@ -7,7 +7,7 @@
     <ProjectGuid>{80DE3B38-227A-4EF8-8502-4779DFB30535}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>User</RootNamespace>
-    <AssemblyName>routine</AssemblyName>
+    <AssemblyName>Routine</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -71,6 +71,9 @@
   <PropertyGroup>
     <ApplicationIcon>resources\routine.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>User.systementry</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -85,10 +88,14 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UniversalConfig">
+      <HintPath>lib\UniversalConfig.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="source\fonthandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="source\manager.cs" />
     <Compile Include="source\systementry.cs" />
     <Compile Include="source\winstyle.cs" />
     <Compile Include="windows\Appointments\ucpappointments.cs">
@@ -278,6 +285,8 @@
     <Content Include="icons\urgend.png" />
     <Content Include="resources\routine.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="lib\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

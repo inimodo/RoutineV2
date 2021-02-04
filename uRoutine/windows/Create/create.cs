@@ -17,7 +17,7 @@ namespace User.Action
         public ucpcreate()
         {
             InitializeComponent();
-            Winstyle.Apply(this);
+            Winstyle.Apply(this,new Size(275,91));
 
         }
     }

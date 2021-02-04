@@ -34,7 +34,6 @@
             this.e_hider = new System.Windows.Forms.Panel();
             this.e_ico_manger = new System.Windows.Forms.PictureBox();
             this.e_ico_general = new System.Windows.Forms.PictureBox();
-            this.e_div_one = new System.Windows.Forms.PictureBox();
             this.e_ico_all = new System.Windows.Forms.PictureBox();
             this.e_ico_create = new System.Windows.Forms.PictureBox();
             this.e_ico_share = new System.Windows.Forms.PictureBox();
@@ -46,7 +45,6 @@
             this.e_hider.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.e_ico_manger)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.e_ico_general)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.e_div_one)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.e_ico_all)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.e_ico_create)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.e_ico_share)).BeginInit();
@@ -63,6 +61,7 @@
             this.e_nav_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.e_nav_logo.TabIndex = 17;
             this.e_nav_logo.TabStop = false;
+            this.e_nav_logo.Click += new System.EventHandler(this.CloseSession);
             // 
             // e_nav_grab
             // 
@@ -71,7 +70,7 @@
             this.e_nav_grab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
             this.e_nav_grab.Location = new System.Drawing.Point(1, 1);
             this.e_nav_grab.Name = "e_nav_grab";
-            this.e_nav_grab.Size = new System.Drawing.Size(390, 30);
+            this.e_nav_grab.Size = new System.Drawing.Size(424, 30);
             this.e_nav_grab.TabIndex = 16;
             this.e_nav_grab.TabStop = false;
             // 
@@ -79,20 +78,19 @@
             // 
             this.e_hider.Controls.Add(this.e_ico_manger);
             this.e_hider.Controls.Add(this.e_ico_general);
-            this.e_hider.Controls.Add(this.e_div_one);
             this.e_hider.Controls.Add(this.e_ico_all);
             this.e_hider.Controls.Add(this.e_ico_create);
             this.e_hider.Controls.Add(this.e_ico_share);
             this.e_hider.Controls.Add(this.e_ico_appointments);
             this.e_hider.Location = new System.Drawing.Point(321, 31);
             this.e_hider.Name = "e_hider";
-            this.e_hider.Size = new System.Drawing.Size(70, 250);
+            this.e_hider.Size = new System.Drawing.Size(70, 235);
             this.e_hider.TabIndex = 20;
             // 
             // e_ico_manger
             // 
             this.e_ico_manger.Image = global::User.Properties.Resources.settings2;
-            this.e_ico_manger.Location = new System.Drawing.Point(20, 200);
+            this.e_ico_manger.Location = new System.Drawing.Point(20, 155);
             this.e_ico_manger.Name = "e_ico_manger";
             this.e_ico_manger.Size = new System.Drawing.Size(30, 30);
             this.e_ico_manger.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -102,26 +100,17 @@
             // e_ico_general
             // 
             this.e_ico_general.Image = global::User.Properties.Resources.settings;
-            this.e_ico_general.Location = new System.Drawing.Point(20, 164);
+            this.e_ico_general.Location = new System.Drawing.Point(20, 190);
             this.e_ico_general.Name = "e_ico_general";
             this.e_ico_general.Size = new System.Drawing.Size(30, 30);
             this.e_ico_general.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.e_ico_general.TabIndex = 31;
             this.e_ico_general.TabStop = false;
             // 
-            // e_div_one
-            // 
-            this.e_div_one.BackColor = System.Drawing.Color.White;
-            this.e_div_one.Location = new System.Drawing.Point(10, 157);
-            this.e_div_one.Name = "e_div_one";
-            this.e_div_one.Size = new System.Drawing.Size(50, 1);
-            this.e_div_one.TabIndex = 32;
-            this.e_div_one.TabStop = false;
-            // 
             // e_ico_all
             // 
             this.e_ico_all.Image = global::User.Properties.Resources.homework;
-            this.e_ico_all.Location = new System.Drawing.Point(20, 51);
+            this.e_ico_all.Location = new System.Drawing.Point(20, 50);
             this.e_ico_all.Name = "e_ico_all";
             this.e_ico_all.Size = new System.Drawing.Size(30, 30);
             this.e_ico_all.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -141,7 +130,7 @@
             // e_ico_share
             // 
             this.e_ico_share.Image = global::User.Properties.Resources.share;
-            this.e_ico_share.Location = new System.Drawing.Point(20, 121);
+            this.e_ico_share.Location = new System.Drawing.Point(20, 120);
             this.e_ico_share.Name = "e_ico_share";
             this.e_ico_share.Size = new System.Drawing.Size(30, 30);
             this.e_ico_share.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -151,7 +140,7 @@
             // e_ico_appointments
             // 
             this.e_ico_appointments.Image = global::User.Properties.Resources.calendar;
-            this.e_ico_appointments.Location = new System.Drawing.Point(20, 86);
+            this.e_ico_appointments.Location = new System.Drawing.Point(20, 85);
             this.e_ico_appointments.Name = "e_ico_appointments";
             this.e_ico_appointments.Size = new System.Drawing.Size(30, 30);
             this.e_ico_appointments.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -181,7 +170,7 @@
             this.e_disp_subjects.Location = new System.Drawing.Point(1, 31);
             this.e_disp_subjects.MultiSelect = false;
             this.e_disp_subjects.Name = "e_disp_subjects";
-            this.e_disp_subjects.Size = new System.Drawing.Size(320, 250);
+            this.e_disp_subjects.Size = new System.Drawing.Size(320, 235);
             this.e_disp_subjects.TabIndex = 124;
             this.e_disp_subjects.TileSize = new System.Drawing.Size(20, 20);
             this.e_disp_subjects.UseCompatibleStateImageBehavior = false;
@@ -192,7 +181,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.ClientSize = new System.Drawing.Size(392, 282);
+            this.ClientSize = new System.Drawing.Size(426, 282);
             this.Controls.Add(this.e_disp_subjects);
             this.Controls.Add(this.e_nav_topic);
             this.Controls.Add(this.e_hider);
@@ -210,7 +199,6 @@
             this.e_hider.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.e_ico_manger)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.e_ico_general)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.e_div_one)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.e_ico_all)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.e_ico_create)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.e_ico_share)).EndInit();
@@ -226,7 +214,6 @@
         private System.Windows.Forms.Panel e_hider;
         private System.Windows.Forms.PictureBox e_ico_manger;
         private System.Windows.Forms.PictureBox e_ico_general;
-        private System.Windows.Forms.PictureBox e_div_one;
         private System.Windows.Forms.PictureBox e_ico_all;
         private System.Windows.Forms.PictureBox e_ico_create;
         private System.Windows.Forms.PictureBox e_ico_share;

@@ -7,11 +7,11 @@ using System.Runtime.InteropServices;
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die einer Assembly zugeordnet sind.
 [assembly: AssemblyTitle("Routine")]
-[assembly: AssemblyDescription("File Manager")]
+[assembly: AssemblyDescription("Filemanager for Students")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("UCPSystems Austria")]
 [assembly: AssemblyProduct("Routine")]
-[assembly: AssemblyCopyright("Copyright ©  2019")]
+[assembly: AssemblyCopyright("2019-2021 UCPSystems Austria All right reserverd")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

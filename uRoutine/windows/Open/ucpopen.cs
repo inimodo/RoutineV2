@@ -18,7 +18,7 @@ namespace User.Action
         public ucpopen()
         {
             InitializeComponent();
-            Winstyle.Apply(this);
+            Winstyle.Apply(this,new Size(340,400));
 
         }
     }

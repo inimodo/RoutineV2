@@ -33,21 +33,21 @@
             this.e_hider = new System.Windows.Forms.Panel();
             this.e_but_create = new System.Windows.Forms.Button();
             this.e_but_subjects_remove = new System.Windows.Forms.PictureBox();
+            this.e_but_subjects_extern = new System.Windows.Forms.PictureBox();
             this.e_but_subjects_rename = new System.Windows.Forms.PictureBox();
             this.e_but_subjects_add = new System.Windows.Forms.PictureBox();
             this.e_disp_subjects = new System.Windows.Forms.ListView();
             this.e_nav_close = new System.Windows.Forms.PictureBox();
             this.e_nav_logo = new System.Windows.Forms.PictureBox();
             this.e_nav = new System.Windows.Forms.PictureBox();
-            this.e_but_subjects_extern = new System.Windows.Forms.PictureBox();
             this.e_hider.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.e_but_subjects_remove)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.e_but_subjects_extern)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.e_but_subjects_rename)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.e_but_subjects_add)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.e_nav_close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.e_nav_logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.e_nav)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.e_but_subjects_extern)).BeginInit();
             this.SuspendLayout();
             // 
             // e_nav_title
@@ -84,7 +84,6 @@
             this.e_but_create.TabIndex = 130;
             this.e_but_create.Text = "Updates";
             this.e_but_create.UseVisualStyleBackColor = true;
-
             // 
             // e_but_subjects_remove
             // 
@@ -96,6 +95,17 @@
             this.e_but_subjects_remove.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.e_but_subjects_remove.TabIndex = 127;
             this.e_but_subjects_remove.TabStop = false;
+            // 
+            // e_but_subjects_extern
+            // 
+            this.e_but_subjects_extern.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
+            this.e_but_subjects_extern.Image = global::User.Properties.Resources.import;
+            this.e_but_subjects_extern.Location = new System.Drawing.Point(55, 142);
+            this.e_but_subjects_extern.Name = "e_but_subjects_extern";
+            this.e_but_subjects_extern.Size = new System.Drawing.Size(40, 40);
+            this.e_but_subjects_extern.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.e_but_subjects_extern.TabIndex = 128;
+            this.e_but_subjects_extern.TabStop = false;
             // 
             // e_but_subjects_rename
             // 
@@ -169,25 +179,14 @@
             this.e_nav.TabIndex = 16;
             this.e_nav.TabStop = false;
             // 
-            // e_but_subjects_extern
-            // 
-            this.e_but_subjects_extern.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
-            this.e_but_subjects_extern.Image = global::User.Properties.Resources.import;
-            this.e_but_subjects_extern.Location = new System.Drawing.Point(55, 142);
-            this.e_but_subjects_extern.Name = "e_but_subjects_extern";
-            this.e_but_subjects_extern.Size = new System.Drawing.Size(40, 40);
-            this.e_but_subjects_extern.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.e_but_subjects_extern.TabIndex = 128;
-            this.e_but_subjects_extern.TabStop = false;
-            // 
             // ucpsettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.ClientSize = new System.Drawing.Size(536, 472);
-            this.Controls.Add(this.e_nav_close);
             this.Controls.Add(this.e_hider);
+            this.Controls.Add(this.e_nav_close);
             this.Controls.Add(this.e_nav_title);
             this.Controls.Add(this.e_nav_logo);
             this.Controls.Add(this.e_nav);
@@ -199,12 +198,12 @@
             this.Text = "WINDOWNAME";
             this.e_hider.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.e_but_subjects_remove)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.e_but_subjects_extern)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.e_but_subjects_rename)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.e_but_subjects_add)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.e_nav_close)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.e_nav_logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.e_nav)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.e_but_subjects_extern)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

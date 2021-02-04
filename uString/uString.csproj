@@ -7,8 +7,8 @@
     <ProjectGuid>{E0332961-1445-4A85-9DB4-3C7A0F78E438}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Source</RootNamespace>
-    <AssemblyName>stringdefSx</AssemblyName>
+    <RootNamespace>User.Source</RootNamespace>
+    <AssemblyName>Language</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

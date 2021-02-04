@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,8 +10,9 @@ namespace User.Source
 {
     public static class Winstyle
     {
-        public static void Apply(Form o_This)
+        public static void Apply(Form o_This,Size o_Size)
         {
+            o_This.Size = new Size(o_Size.Width+2,o_Size.Height+32);
             o_This.BackColor = Stylesource.o_border;
             foreach (Control o_Control in o_This.Controls)
             {

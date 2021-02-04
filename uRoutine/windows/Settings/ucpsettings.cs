@@ -18,7 +18,7 @@ namespace User.Action
         public ucpsettings()
         {
             InitializeComponent();
-            Winstyle.Apply(this);
+            Winstyle.Apply(this,new Size(520,195));
 
         }
     }

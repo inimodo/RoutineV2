@@ -7,8 +7,8 @@
     <ProjectGuid>{65B97E25-B94A-4420-A0AF-E350A6A7EE48}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Source</RootNamespace>
-    <AssemblyName>stylesdefSx</AssemblyName>
+    <RootNamespace>User.Source</RootNamespace>
+    <AssemblyName>Style</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
