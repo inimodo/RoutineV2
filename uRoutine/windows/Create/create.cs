@@ -17,7 +17,7 @@ namespace User.Action
         public ucpcreate()
         {
             InitializeComponent();
-            Winstyle.Apply(this,new Size(275,91));
+            Winstyle.Apply(this,new Size(275,91),"Create Session");
 
         }
     }

@@ -18,7 +18,7 @@ namespace User.Action
         public ucpexport()
         {
             InitializeComponent();
-            Winstyle.Apply(this,new Size(230,300));
+            Winstyle.Apply(this,new Size(230,300),"Export");
 
         }
 

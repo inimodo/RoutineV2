@@ -31,13 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucpmessager));
             this.e_nav_title = new System.Windows.Forms.Label();
             this.e_nav_logo = new System.Windows.Forms.PictureBox();
-            this.e_nav = new System.Windows.Forms.PictureBox();
+            this.e_nav_grab = new System.Windows.Forms.PictureBox();
             this.e_hider = new System.Windows.Forms.Panel();
             this.e_msg = new System.Windows.Forms.Label();
             this.e_yes = new System.Windows.Forms.Button();
             this.e_no = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.e_nav_logo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.e_nav)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.e_nav_grab)).BeginInit();
             this.e_hider.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,19 +64,16 @@
             this.e_nav_logo.TabIndex = 17;
             this.e_nav_logo.TabStop = false;
             // 
-            // e_nav
+            // e_nav_grab
             // 
-            this.e_nav.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.e_nav_grab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.e_nav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
-            this.e_nav.Location = new System.Drawing.Point(1, 1);
-            this.e_nav.Name = "e_nav";
-            this.e_nav.Size = new System.Drawing.Size(359, 30);
-            this.e_nav.TabIndex = 16;
-            this.e_nav.TabStop = false;
-            this.e_nav.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Move_start);
-            this.e_nav.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Move_run);
-            this.e_nav.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Move_stop);
+            this.e_nav_grab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
+            this.e_nav_grab.Location = new System.Drawing.Point(1, 1);
+            this.e_nav_grab.Name = "e_nav_grab";
+            this.e_nav_grab.Size = new System.Drawing.Size(359, 30);
+            this.e_nav_grab.TabIndex = 16;
+            this.e_nav_grab.TabStop = false;
             // 
             // e_hider
             // 
@@ -109,7 +106,7 @@
             this.e_yes.TabIndex = 63;
             this.e_yes.Text = "Okay";
             this.e_yes.UseVisualStyleBackColor = true;
-            this.e_yes.Click += new System.EventHandler(this.click_yes);
+            this.e_yes.Click += new System.EventHandler(this.Yes);
             // 
             // e_no
             // 
@@ -120,7 +117,7 @@
             this.e_no.TabIndex = 62;
             this.e_no.Text = "Okay";
             this.e_no.UseVisualStyleBackColor = true;
-            this.e_no.Click += new System.EventHandler(this.click_no);
+            this.e_no.Click += new System.EventHandler(this.No);
             // 
             // ucpmessager
             // 
@@ -131,7 +128,7 @@
             this.Controls.Add(this.e_hider);
             this.Controls.Add(this.e_nav_title);
             this.Controls.Add(this.e_nav_logo);
-            this.Controls.Add(this.e_nav);
+            this.Controls.Add(this.e_nav_grab);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -139,7 +136,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WINDOWNAME";
             ((System.ComponentModel.ISupportInitialize)(this.e_nav_logo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.e_nav)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.e_nav_grab)).EndInit();
             this.e_hider.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -149,7 +146,7 @@
         #endregion
         private System.Windows.Forms.Label e_nav_title;
         private System.Windows.Forms.PictureBox e_nav_logo;
-        private System.Windows.Forms.PictureBox e_nav;
+        private System.Windows.Forms.PictureBox e_nav_grab;
         private System.Windows.Forms.Panel e_hider;
         private System.Windows.Forms.Button e_yes;
         private System.Windows.Forms.Button e_no;

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using User.Source;
 
 namespace User.Action
 {
@@ -14,27 +15,37 @@ namespace User.Action
     {
 
         public bool b_answer;
-        private bool b_ask;
+        Winstyle.Windrag o_Drag;
 
-        private string s_wintitle;
-        private string s_wintext;
         public ucpmessager(bool b_askfor,string s_title,string s_msg)
         {
-            s_wintitle = s_title;
-            s_wintext = s_msg;
-            b_ask = b_askfor;
-            
             InitializeComponent();
+            Winstyle.Apply(this, new Size(359, 148), s_title);
+            o_Drag = new Winstyle.Windrag(this);
 
-            InitializeInterface();
+            if (b_askfor)
+            {
+                this.e_yes.Text = "YES";
+                this.e_no.Text = "NO";
+            }
+            else
+            {
+                this.e_yes.Hide();
+                this.e_no.Text = "OKAY";
+            }
+            this.e_msg.Text = s_msg;
         }
-        partial void InitializeInterface();
 
-        partial void click_no(object o_sender, EventArgs e_eventargs);
-        partial void click_yes(object o_sender, EventArgs e_eventargs);
+        private void Yes(object sender, EventArgs e)
+        {
+            b_answer = true;
+            this.Close();
+        }
 
-        partial void Move_start(object o_sender, MouseEventArgs o_mouseventargs);
-        partial void Move_run(object o_sender, MouseEventArgs o_mouseventargs);
-        partial void Move_stop(object o_sender, MouseEventArgs o_mouseventargs);
+        private void No(object sender, EventArgs e)
+        {
+            b_answer = false;
+            this.Close();
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace User.Action
         public ucpsubjects()
         {
             InitializeComponent();
-            Winstyle.Apply(this, new Size(340,400));
+            Winstyle.Apply(this, new Size(340,400),"Classes");
 
         }
     }

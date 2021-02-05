@@ -136,12 +136,6 @@
     <Compile Include="windows\Messager\ucpmessager.Designer.cs">
       <DependentUpon>ucpmessager.cs</DependentUpon>
     </Compile>
-    <Compile Include="windows\Messager\ucpmessager.init.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="windows\Messager\ucpmessager.process.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="windows\Open\ucpopen.cs">
       <SubType>Form</SubType>
     </Compile>

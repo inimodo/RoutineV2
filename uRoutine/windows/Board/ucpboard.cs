@@ -16,7 +16,10 @@ namespace User.Action
 {
     public partial class ucpboard : Form 
     {
-
+        public static class Win
+        {
+            public static ucpsettings o_Settings = new ucpsettings();
+        }
         public static class Data
         {
             public static bool b_OpenedSession=true;
@@ -25,7 +28,7 @@ namespace User.Action
         public ucpboard(string[] s_args)
         {
             InitializeComponent();
-            Winstyle.Apply(this,new Size(390,235));
+            Winstyle.Apply(this,new Size(390,235),"Routine");
             Router.LoadData(out Data.o_Routes);
 
         }
@@ -64,6 +67,11 @@ namespace User.Action
 
             this.Update();
             this.UpdateBounds();
+        }
+
+        private void OpenSettings(object sender, EventArgs e)
+        {
+            Win.o_Settings.Show();
         }
     }
 }

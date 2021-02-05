@@ -106,6 +106,7 @@
             this.e_ico_general.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.e_ico_general.TabIndex = 31;
             this.e_ico_general.TabStop = false;
+            this.e_ico_general.Click += new System.EventHandler(this.OpenSettings);
             // 
             // e_ico_all
             // 

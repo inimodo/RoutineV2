@@ -18,7 +18,7 @@ namespace User.Action
         public ucpappointments()
         {
             InitializeComponent();
-            Winstyle.Apply(this,new Size(280,320));
+            Winstyle.Apply(this,new Size(280,320),"Appointments");
 
         }
 

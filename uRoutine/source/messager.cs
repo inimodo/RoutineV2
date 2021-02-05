@@ -8,7 +8,7 @@ using System.IO;
 using User.Action;
 namespace User.Source
 {
-    public static class u_Message
+    public class Notify
     {
         public static void Say(string s_title,string s_message) {
             ucpmessager o_window = new ucpmessager(false, s_title, s_message);
