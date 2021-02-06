@@ -23,13 +23,12 @@ namespace User.Action
         public static class Data
         {
             public static bool b_OpenedSession=true;
-            public static RouterRoutes o_Routes;
         }
         public ucpboard(string[] s_args)
         {
             InitializeComponent();
             Winstyle.Apply(this,new Size(390,235),"Routine");
-            Router.LoadData(out Data.o_Routes);
+            Router.LoadData();
 
         }
 

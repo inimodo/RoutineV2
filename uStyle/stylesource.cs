@@ -5,6 +5,7 @@ namespace User.Source
     public static class Stylesource
     {
         public static Color o_text = Color.FromArgb(255, 255, 255);
+        public static Color o_text_light = Color.FromArgb(190, 190, 190);
         public static Color o_border = Color.FromArgb(206, 50, 52);
         public static Color o_dragbar = Color.FromArgb(24, 26, 26);
 

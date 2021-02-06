@@ -80,6 +80,7 @@
             this.e_but_subjects_remove.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.e_but_subjects_remove.TabIndex = 127;
             this.e_but_subjects_remove.TabStop = false;
+            this.e_but_subjects_remove.Click += new System.EventHandler(this.RemoveYear);
             // 
             // e_but_subjects_extern
             // 
@@ -91,6 +92,7 @@
             this.e_but_subjects_extern.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.e_but_subjects_extern.TabIndex = 128;
             this.e_but_subjects_extern.TabStop = false;
+            this.e_but_subjects_extern.Click += new System.EventHandler(this.AddExisting);
             // 
             // e_but_subjects_add
             // 
@@ -120,6 +122,7 @@
             this.e_disp_subjects.TileSize = new System.Drawing.Size(20, 20);
             this.e_disp_subjects.UseCompatibleStateImageBehavior = false;
             this.e_disp_subjects.View = System.Windows.Forms.View.SmallIcon;
+            this.e_disp_subjects.DoubleClick += new System.EventHandler(this.Sellect);
             // 
             // e_nav_close
             // 

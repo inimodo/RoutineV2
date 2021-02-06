@@ -10,51 +10,47 @@ using UniversalConfig;
 namespace User.Source
 {
 
-    public struct RouterRoutes
-    { 
-        public string[] s_ProjectFiles;
-        public int i_CurrentProject;
-    }
     public static class Router
     {
+        public static string[] s_ProjectFiles=null;
+        public static int i_CurrentProject=-1;
+
         private static string s_File = Application.StartupPath + "\\router.ufg";
 
-        public static void LoadData(out RouterRoutes o_Routes)
+        public static void LoadData()
         {
-            o_Routes = new RouterRoutes();
-            o_Routes.i_CurrentProject = 0;
-            o_Routes.s_ProjectFiles = new string[0];
 
             if (File.Exists(s_File))
             {
                 using (UniversalConfigReader o_Reader = new UniversalConfigReader(s_File))
                 {
                     o_Reader.LoadConfig();
-                    o_Routes.s_ProjectFiles = o_Reader.GetArray<string>("ROUTER", "LINK");
-                    o_Routes.i_CurrentProject = o_Reader.GetValue<int>("ROUTER", "CURRENT");
+                    s_ProjectFiles = o_Reader.GetAsStringArray("ROUTER", "LINK", typeof(string));
+                    i_CurrentProject = o_Reader.GetValue<int>("ROUTER", "CURRENT");
                 }
             }
             else
             {
                 CreateFile();
-                SaveData(o_Routes);
             }
         }
-        public static void SaveData(RouterRoutes o_Routes,bool b_Repeat=true)
+        public static void SaveData(bool b_Repeat=true)
         {
             if (File.Exists(s_File))
             {
                 using (UniversalConfigReader o_Reader = new UniversalConfigReader(s_File))
                 {
-                    o_Reader.SetArray<string>("ROUTER", "LINK", o_Routes.s_ProjectFiles);
-                    o_Reader.SetValue<int>("ROUTER", "CURRENT", o_Routes.i_CurrentProject);
+
+                    o_Reader.SetArray<string>("ROUTER", "LINK", s_ProjectFiles);
+                    o_Reader.SetValue<int>("ROUTER", "CURRENT", i_CurrentProject);
+
                     o_Reader.SaveConfig();
                 }
             }
             else
             {
                 CreateFile();
-                if(b_Repeat)SaveData(o_Routes,false);
+                if(b_Repeat)SaveData(false);
             }
         }
         public static void CreateFile()
@@ -66,6 +62,40 @@ namespace User.Source
                 o_Creator.AppendRegister("ROUTER","CURRENT",typeof(int));
                 o_Creator.Build();
             }
+        }
+        public static void AddRoute(string s_Path)
+        {
+            string[] s_Temp;
+            if (s_ProjectFiles == null)
+            {
+                s_Temp = new string[1];
+                s_Temp[0] = s_Path;
+            }
+            else
+            {
+                s_Temp = new string[s_ProjectFiles.Length + 1];
+                for (int i_Index = 0; i_Index < s_ProjectFiles.Length; i_Index++)
+                {
+                    s_Temp[i_Index] = s_ProjectFiles[i_Index];
+                }
+                s_Temp[s_ProjectFiles.Length] = s_Path;
+            }
+            s_ProjectFiles = new string[s_Temp.Length];
+            s_ProjectFiles = s_Temp;
+        }
+        public static void DelRoute(int i_RouteIndex)
+        {
+            if (i_RouteIndex >= s_ProjectFiles.Length)return;
+           
+            string[] s_Temp = new string[s_ProjectFiles.Length - 1];
+            for (int i_Index = 0,i_OffsetIndex =0; i_Index < s_ProjectFiles.Length-1; i_OffsetIndex++ ,i_Index++)
+            {
+                if (i_Index == i_RouteIndex) i_OffsetIndex++;
+                s_Temp[i_Index] = s_ProjectFiles[i_OffsetIndex];
+            }
+            s_ProjectFiles = new string[s_ProjectFiles.Length-1];
+            s_ProjectFiles = s_Temp;
+            if (s_ProjectFiles.Length == 0) s_ProjectFiles = null;
         }
     }
 }
