@@ -8,11 +8,10 @@ using System.Windows.Forms;
 using UniversalConfig;
 
 namespace User.Source
-{
-
+{ 
     public static class Router
     {
-        public static string[] s_ProjectFiles=null;
+        public static Lists<string> s_ProjectFiles = new Lists<string>();
         public static int i_CurrentProject=-1;
 
         private static string s_File = Application.StartupPath + "\\router.ufg";
@@ -25,7 +24,7 @@ namespace User.Source
                 using (UniversalConfigReader o_Reader = new UniversalConfigReader(s_File))
                 {
                     o_Reader.LoadConfig();
-                    s_ProjectFiles = o_Reader.GetAsStringArray("ROUTER", "LINK", typeof(string));
+                    s_ProjectFiles.o_Content = o_Reader.GetAsStringArray("ROUTER", "LINK", typeof(string));
                     i_CurrentProject = o_Reader.GetValue<int>("ROUTER", "CURRENT");
                 }
             }
@@ -41,7 +40,7 @@ namespace User.Source
                 using (UniversalConfigReader o_Reader = new UniversalConfigReader(s_File))
                 {
 
-                    o_Reader.SetArray<string>("ROUTER", "LINK", s_ProjectFiles);
+                    o_Reader.SetArray<string>("ROUTER", "LINK", s_ProjectFiles.o_Content);
                     o_Reader.SetValue<int>("ROUTER", "CURRENT", i_CurrentProject);
 
                     o_Reader.SaveConfig();
@@ -63,39 +62,13 @@ namespace User.Source
                 o_Creator.Build();
             }
         }
-        public static void AddRoute(string s_Path)
+        public static bool GetCurrentDir(out  string s_Dir)
         {
-            string[] s_Temp;
-            if (s_ProjectFiles == null)
-            {
-                s_Temp = new string[1];
-                s_Temp[0] = s_Path;
-            }
-            else
-            {
-                s_Temp = new string[s_ProjectFiles.Length + 1];
-                for (int i_Index = 0; i_Index < s_ProjectFiles.Length; i_Index++)
-                {
-                    s_Temp[i_Index] = s_ProjectFiles[i_Index];
-                }
-                s_Temp[s_ProjectFiles.Length] = s_Path;
-            }
-            s_ProjectFiles = new string[s_Temp.Length];
-            s_ProjectFiles = s_Temp;
-        }
-        public static void DelRoute(int i_RouteIndex)
-        {
-            if (i_RouteIndex >= s_ProjectFiles.Length)return;
-           
-            string[] s_Temp = new string[s_ProjectFiles.Length - 1];
-            for (int i_Index = 0,i_OffsetIndex =0; i_Index < s_ProjectFiles.Length-1; i_OffsetIndex++ ,i_Index++)
-            {
-                if (i_Index == i_RouteIndex) i_OffsetIndex++;
-                s_Temp[i_Index] = s_ProjectFiles[i_OffsetIndex];
-            }
-            s_ProjectFiles = new string[s_ProjectFiles.Length-1];
-            s_ProjectFiles = s_Temp;
-            if (s_ProjectFiles.Length == 0) s_ProjectFiles = null;
+            s_Dir = null;
+            if (i_CurrentProject == -1) return false;
+            if (s_ProjectFiles.o_Content[i_CurrentProject] == null) return false;
+            s_Dir=s_ProjectFiles.o_Content[i_CurrentProject]+"\\";
+            return true;
         }
     }
 }

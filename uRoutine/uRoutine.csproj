@@ -93,9 +93,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="source\checker.cs" />
     <Compile Include="source\fonthandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="source\manager.cs" />
+    <Compile Include="source\lists.cs" />
+    <Compile Include="source\router.cs" />
+    <Compile Include="source\projecthandler.cs" />
     <Compile Include="source\systementry.cs" />
     <Compile Include="source\winstyle.cs" />
     <Compile Include="windows\Appointments\ucpappointments.cs">

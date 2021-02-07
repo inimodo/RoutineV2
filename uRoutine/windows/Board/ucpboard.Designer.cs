@@ -96,6 +96,7 @@
             this.e_ico_manger.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.e_ico_manger.TabIndex = 33;
             this.e_ico_manger.TabStop = false;
+            this.e_ico_manger.Click += new System.EventHandler(this.OpenSubjects);
             // 
             // e_ico_general
             // 
@@ -195,6 +196,7 @@
             this.ShowInTaskbar = false;
             this.Text = "WINDOWNAME";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.Loading);
             ((System.ComponentModel.ISupportInitialize)(this.e_nav_logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.e_nav_grab)).EndInit();
             this.e_hider.ResumeLayout(false);

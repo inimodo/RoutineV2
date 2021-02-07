@@ -34,10 +34,10 @@ namespace User.Action
             {
                 o_YearDialog.ShowDialog();
                 if (o_YearDialog.s_GradeName.Length == 0) return;
-                if (!CheckName(o_YearDialog.s_GradeName))
+                if (!Checker.CheckValid(o_YearDialog.s_GradeName))
                 {
                     SystemSounds.Asterisk.Play();
-                    Notify.Say("Invalid Name", "Sorry, but the charakter '][}:=#' are not allowed to be used in the grade name.");
+                    Notify.Say("Invalid Name", "Sorry, but the charakters '][}:=#' are not allowed to be used in the grade name.");
                 }
                 else
                 {
@@ -53,33 +53,25 @@ namespace User.Action
             }
             if (s_Path != null && s_Name != null)
             {
-                Router.AddRoute(s_Path);
+                Router.s_ProjectFiles.Add(s_Path);
                 Router.SaveData();
-                //CREATE config.ufg WITH  s_name AND OTHER DATA
+                Projecthandler.Create(s_Path,s_Name);
             }
 
             UpdateView();
         }
 
-        private bool CheckName(string s_Text)
-        {
-            char[] c_Forbiden = { ']', '[', '{', '}', ':', '=', '#' };
-            for (int i_Index = 0; i_Index < c_Forbiden.Length; i_Index++)
-            {
-                if (s_Text.Contains(c_Forbiden[i_Index])) return false;
-            }
-            return true;
-        }
+
         public void UpdateView()
         {
-            if (Router.s_ProjectFiles != null)
+            if (Router.s_ProjectFiles.o_Content != null)
             {
                 ImageList o_list = new ImageList();
 
                 e_disp_subjects.Items.Clear();
-                for (int i_index = 0; i_index < Router.s_ProjectFiles.Length; i_index++)
+                for (int i_index = 0; i_index < Router.s_ProjectFiles.o_Content.Length; i_index++)
                 {
-                    ListViewItem o_Item = new ListViewItem(Router.s_ProjectFiles[i_index],i_index);
+                    ListViewItem o_Item = new ListViewItem(Router.s_ProjectFiles.o_Content[i_index],i_index);
 
                     if (i_index != Router.i_CurrentProject) o_Item.ForeColor = Stylesource.o_text_light;
                     e_disp_subjects.Items.Add(o_Item);
@@ -95,7 +87,7 @@ namespace User.Action
             if (e_disp_subjects.SelectedItems.Count > 0)
             {
                 Router.i_CurrentProject = -1;
-                Router.DelRoute( e_disp_subjects.SelectedItems[0].ImageIndex);
+                Router.s_ProjectFiles.Delete( e_disp_subjects.SelectedItems[0].ImageIndex);
                 Router.SaveData();
                 UpdateView();
             }
@@ -117,7 +109,7 @@ namespace User.Action
             {
                 if (o_FolderDialog.ShowDialog() == DialogResult.OK)
                 {
-                    Router.AddRoute(o_FolderDialog.SelectedPath);
+                    Router.s_ProjectFiles.Add(o_FolderDialog.SelectedPath);
                     Router.SaveData();
                     UpdateView();
 

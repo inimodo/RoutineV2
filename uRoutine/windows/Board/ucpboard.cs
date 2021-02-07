@@ -19,19 +19,20 @@ namespace User.Action
         public static class Win
         {
             public static ucpsettings o_Settings = new ucpsettings();
+            public static ucpsubjects o_Subjects = new ucpsubjects();
         }
         public static class Data
         {
-            public static bool b_OpenedSession=true;
+            public static bool b_OpenedSession=false;
         }
         public ucpboard(string[] s_args)
         {
             InitializeComponent();
             Winstyle.Apply(this,new Size(390,235),"Routine");
             Router.LoadData();
-
+            Projecthandler.Load();
         }
-
+  
         private void CloseSession(object sender, EventArgs e)
         {
             if (Data.b_OpenedSession)
@@ -71,6 +72,38 @@ namespace User.Action
         private void OpenSettings(object sender, EventArgs e)
         {
             Win.o_Settings.Show();
+        }
+
+        private void Loading(object sender, EventArgs e)
+        {
+            UpdateWindowState();
+            if (Router.i_CurrentProject == -1) SettingsTutorial();
+            if (Router.i_CurrentProject != -1 && Projecthandler.s_Subjects.o_Content == null) SubjectTutorial();
+
+        }
+
+        public void SettingsTutorial()
+        {
+            Notify.Say("Hello!", "You need to create or sellect a projectfolder.");
+            OpenSettings(null, null);
+
+        }
+
+        public void SubjectTutorial()
+        {
+            Notify.Say("Hello!", "Okay, now you need to enter all your subjects.");
+            OpenSubjects(null, null);
+
+        }
+
+        private void OpenSubjects(object sender, EventArgs e)
+        {
+            if ((Router.i_CurrentProject != -1))
+            {
+                Win.o_Subjects.UpdateView();
+                Win.o_Subjects.Show();
+            }
+
         }
     }
 }
