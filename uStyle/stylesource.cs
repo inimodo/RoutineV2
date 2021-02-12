@@ -14,7 +14,7 @@ namespace User.Source
         public static Color o_boxcolor = Color.FromArgb(32, 34, 34);
         public static Color o_defaultcolordim = Color.FromArgb(200, 200, 200);
         public static Color o_headercolor = Color.FromArgb(206, 50, 52);
-        public static Color o_bhovercolor = Color.FromArgb(206, 50, 52);
+        public static Color o_bhovercolor = Color.FromArgb(103, 25, 25);
         public static Color o_clickcolor = Color.FromArgb(103, 25, 26);
 
         public static Color o_error = Color.FromArgb(255, 0, 255);

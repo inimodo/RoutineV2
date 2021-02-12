@@ -9,7 +9,10 @@ namespace User.Source
     public class Lists<T>
     {
         public T[] o_Content;
-
+        public void Clear()
+        {
+            this.o_Content = null;
+        }
         public void Add(T s_Add)
         {
             T[] s_Temp;

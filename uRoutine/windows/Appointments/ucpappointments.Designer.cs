@@ -78,7 +78,7 @@
             this.e_nav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
             this.e_nav.Location = new System.Drawing.Point(1, 1);
             this.e_nav.Name = "e_nav";
-            this.e_nav.Size = new System.Drawing.Size(359, 30);
+            this.e_nav.Size = new System.Drawing.Size(467, 30);
             this.e_nav.TabIndex = 16;
             this.e_nav.TabStop = false;
             // 
@@ -172,7 +172,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.ClientSize = new System.Drawing.Size(361, 386);
+            this.ClientSize = new System.Drawing.Size(469, 386);
             this.Controls.Add(this.e_nav_close);
             this.Controls.Add(this.e_hider);
             this.Controls.Add(this.e_nav_title);

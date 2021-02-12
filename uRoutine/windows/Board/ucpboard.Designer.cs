@@ -128,6 +128,7 @@
             this.e_ico_create.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.e_ico_create.TabIndex = 36;
             this.e_ico_create.TabStop = false;
+            this.e_ico_create.Click += new System.EventHandler(this.CreateSession);
             // 
             // e_ico_share
             // 

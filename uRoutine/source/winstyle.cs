@@ -21,7 +21,7 @@ namespace User.Source
                 if (o_Control.Name.Contains("_nav_")) o_Control.BackColor = Stylesource.o_dragbar;
                 else o_Control.BackColor = Stylesource.o_boxcolor;
 
-                if (o_Control is TextBox)
+                if (o_Control is TextBox || o_Control is DomainUpDown)
                 {
                     o_Control.ForeColor = Stylesource.o_text;
                     if (o_Control.Name.Contains("_nav_")) o_Control.BackColor = Stylesource.o_dragbar;
@@ -53,9 +53,12 @@ namespace User.Source
 
         public class Windrag
         {
-            public Windrag(Form o_This)
+            public Windrag(Form o_This,bool b_CloseOnDeFocus = true)
             {
+                this.b_CloseOnDeFocus = b_CloseOnDeFocus;
                 this.o_This = o_This;
+                this.o_This.Activated += new System.EventHandler(this.Focus);
+                this.o_This.Deactivate += new System.EventHandler(this.UnFocus);
                 foreach (Control o_Control in o_This.Controls)
                 {
                     if (o_Control.Name == "e_nav_grab" || o_Control.Name == "e_nav_title" || o_Control.Name == "e_nav_logo")
@@ -70,6 +73,7 @@ namespace User.Source
                     }
                 }
             }
+            private bool b_CloseOnDeFocus;
             private Form o_This;
             private Point p_relative;
             private bool b_indrag = false;
@@ -80,7 +84,9 @@ namespace User.Source
             void UnFocus(object sender, EventArgs e)
             {
                 o_This.BackColor = Stylesource.o_clickcolor;
+                if (b_CloseOnDeFocus) Close(sender,e);
             }
+
             void Close(object sender, EventArgs e)
             {
                 o_This.Hide();

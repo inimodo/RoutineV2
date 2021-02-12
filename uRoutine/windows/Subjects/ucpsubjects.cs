@@ -15,7 +15,7 @@ namespace User.Action
     public partial class ucpsubjects : Form
     {
         Winstyle.Windrag o_Drag;
-
+        
         public ucpsubjects()
         {
             InitializeComponent();
@@ -42,7 +42,7 @@ namespace User.Action
 
         public void UpdateView()
         {
-            Console.WriteLine("PING");
+
             if (Projecthandler.s_Subjects.o_Content!= null)
             {
                 ImageList o_list = new ImageList();

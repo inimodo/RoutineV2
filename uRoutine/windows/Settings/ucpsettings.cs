@@ -72,7 +72,6 @@ namespace User.Action
                 for (int i_index = 0; i_index < Router.s_ProjectFiles.o_Content.Length; i_index++)
                 {
                     ListViewItem o_Item = new ListViewItem(Router.s_ProjectFiles.o_Content[i_index],i_index);
-
                     if (i_index != Router.i_CurrentProject) o_Item.ForeColor = Stylesource.o_text_light;
                     e_disp_subjects.Items.Add(o_Item);
                     o_list.Images.Add(User.Properties.Resources.folder);
@@ -99,6 +98,8 @@ namespace User.Action
             {
                 Router.i_CurrentProject = e_disp_subjects.SelectedItems[0].ImageIndex;
                 Router.SaveData();
+                Projecthandler.Load();
+
                 UpdateView();
             }
         }

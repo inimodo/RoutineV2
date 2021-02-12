@@ -20,6 +20,7 @@ namespace User.Action
         {
             public static ucpsettings o_Settings = new ucpsettings();
             public static ucpsubjects o_Subjects = new ucpsubjects();
+            public static ucpcreate o_Create = new ucpcreate();
         }
         public static class Data
         {
@@ -31,8 +32,10 @@ namespace User.Action
             Winstyle.Apply(this,new Size(390,235),"Routine");
             Router.LoadData();
             Projecthandler.Load();
+            Projecthandler.Files.FetchAll();
+            Projecthandler.Templates.LoadTemplates();
         }
-  
+
         private void CloseSession(object sender, EventArgs e)
         {
             if (Data.b_OpenedSession)
@@ -104,6 +107,16 @@ namespace User.Action
                 Win.o_Subjects.Show();
             }
 
+        }
+
+        private void CreateSession(object sender, EventArgs e)
+        {
+            if (Router.i_CurrentProject != -1 && Projecthandler.s_Subjects.o_Content != null)
+            {
+
+                Win.o_Create.UpdateView();
+                Win.o_Create.Show();
+            }
         }
     }
 }
