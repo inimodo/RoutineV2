@@ -39,7 +39,7 @@
             this.e_ico_share = new System.Windows.Forms.PictureBox();
             this.e_ico_appointments = new System.Windows.Forms.PictureBox();
             this.e_nav_topic = new System.Windows.Forms.TextBox();
-            this.e_disp_subjects = new System.Windows.Forms.ListView();
+            this.e_disp_content = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.e_nav_logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.e_nav_grab)).BeginInit();
             this.e_hider.SuspendLayout();
@@ -162,22 +162,27 @@
             this.e_nav_topic.Size = new System.Drawing.Size(191, 19);
             this.e_nav_topic.TabIndex = 65;
             this.e_nav_topic.Text = "Topic";
+            this.e_nav_topic.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UpdateName);
             // 
-            // e_disp_subjects
+            // e_disp_content
             // 
-            this.e_disp_subjects.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.e_disp_subjects.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.e_disp_subjects.Font = new System.Drawing.Font("Logico Sans", 11F);
-            this.e_disp_subjects.ForeColor = System.Drawing.Color.White;
-            this.e_disp_subjects.HideSelection = false;
-            this.e_disp_subjects.Location = new System.Drawing.Point(1, 31);
-            this.e_disp_subjects.MultiSelect = false;
-            this.e_disp_subjects.Name = "e_disp_subjects";
-            this.e_disp_subjects.Size = new System.Drawing.Size(320, 235);
-            this.e_disp_subjects.TabIndex = 124;
-            this.e_disp_subjects.TileSize = new System.Drawing.Size(20, 20);
-            this.e_disp_subjects.UseCompatibleStateImageBehavior = false;
-            this.e_disp_subjects.View = System.Windows.Forms.View.SmallIcon;
+            this.e_disp_content.AllowDrop = true;
+            this.e_disp_content.AutoArrange = false;
+            this.e_disp_content.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.e_disp_content.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.e_disp_content.Font = new System.Drawing.Font("Logico Sans", 13F);
+            this.e_disp_content.ForeColor = System.Drawing.Color.White;
+            this.e_disp_content.HideSelection = false;
+            this.e_disp_content.Location = new System.Drawing.Point(1, 31);
+            this.e_disp_content.Name = "e_disp_content";
+            this.e_disp_content.Size = new System.Drawing.Size(320, 235);
+            this.e_disp_content.TabIndex = 129;
+            this.e_disp_content.TileSize = new System.Drawing.Size(20, 20);
+            this.e_disp_content.UseCompatibleStateImageBehavior = false;
+            this.e_disp_content.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDrop);
+            this.e_disp_content.DragOver += new System.Windows.Forms.DragEventHandler(this.DragOnto);
+            this.e_disp_content.DoubleClick += new System.EventHandler(this.OpenFile);
+            this.e_disp_content.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OpenFolder);
             // 
             // ucpboard
             // 
@@ -185,7 +190,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.ClientSize = new System.Drawing.Size(426, 282);
-            this.Controls.Add(this.e_disp_subjects);
+            this.Controls.Add(this.e_disp_content);
             this.Controls.Add(this.e_nav_topic);
             this.Controls.Add(this.e_hider);
             this.Controls.Add(this.e_nav_logo);
@@ -223,6 +228,6 @@
         private System.Windows.Forms.PictureBox e_ico_share;
         private System.Windows.Forms.PictureBox e_ico_appointments;
         private System.Windows.Forms.TextBox e_nav_topic;
-        private System.Windows.Forms.ListView e_disp_subjects;
+        private System.Windows.Forms.ListView e_disp_content;
     }
 }

@@ -17,5 +17,10 @@ namespace User.Source
             }
             return true;
         }
+        public static string ExtractFileName(string s_Path)
+        {
+            string[] s_Split = s_Path.Split('\\');
+            return s_Split[s_Split.Length - 1];
+        }
     }
 }

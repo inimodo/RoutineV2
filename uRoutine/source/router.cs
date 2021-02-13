@@ -14,7 +14,7 @@ namespace User.Source
         public static Lists<string> s_ProjectFiles = new Lists<string>();
         public static int i_CurrentProject=-1;
 
-        private static string s_File = Application.StartupPath + "\\router.ufg";
+        private static string s_File = Application.StartupPath + @"\router.ufg";
 
         public static void LoadData()
         {
@@ -67,7 +67,7 @@ namespace User.Source
             s_Dir = null;
             if (i_CurrentProject == -1) return false;
             if (s_ProjectFiles.o_Content[i_CurrentProject] == null) return false;
-            s_Dir=s_ProjectFiles.o_Content[i_CurrentProject]+"\\";
+            s_Dir=s_ProjectFiles.o_Content[i_CurrentProject]+@"\";
             return true;
         }
     }

@@ -15,7 +15,9 @@ namespace User.Action
 
     //TODO: 
     /*
-    Error Hnadling For all Inputs
+    Error Handling For all Inputs
+
+        IHERITANCE
          
     */
 
@@ -26,7 +28,8 @@ namespace User.Action
         public string s_Name;
         private bool b_State  = true;
         Winstyle.Windrag o_Drag;
-
+        public delegate void OpenSession(int i_SessionIndex);
+        public OpenSession o_OpenSession;
         public ucpcreate()
         {
             InitializeComponent();
@@ -63,7 +66,6 @@ namespace User.Action
         }
         public void UpdateView()
         {
-
             e_inp_topic.Text = "eg.: 'Calculus Lesson 1'";
             if (Projecthandler.s_Subjects.o_Content != null)
             {
@@ -117,6 +119,7 @@ namespace User.Action
                 }
 
                 Projecthandler.Files.Create(o_Session, i_Temps);
+                o_OpenSession(Projecthandler.Files.o_Sessions.o_Content.Length-1);
                 this.Hide();
 
 
