@@ -11,7 +11,7 @@ namespace User.Source
     public class Projecthandler
     {
         public static Lists<string> s_Subjects = new Lists<string>();
-
+        public static string s_Name;
         public static void Create(string s_Path,string s_Name)
         {
             using (UniversalConfigCreator o_Creator = new UniversalConfigCreator(s_Path+@"\config.ufg"))
@@ -52,6 +52,7 @@ namespace User.Source
                 {
                     o_Reader.LoadConfig();//NOTICE
                     s_Subjects.o_Content = o_Reader.GetAsStringArray("DATA", "SUBJECTS",typeof(string));
+                    s_Name = o_Reader.GetRawValue("DATA", "NAME",typeof(string));
                 }
             }
         }

@@ -26,6 +26,7 @@ namespace User.Action
             public static ucpsettings o_Settings = new ucpsettings();
             public static ucpsubjects o_Subjects = new ucpsubjects();
             public static ucpcreate o_Create = new ucpcreate();
+            public static ucpopen o_Open = new ucpopen();
         }
         public static class Data
         {
@@ -42,6 +43,7 @@ namespace User.Action
             Projecthandler.Files.FetchAll();
             Projecthandler.Templates.LoadTemplates();
             Win.o_Create.o_OpenSession = CallbackOpen;
+            Win.o_Open.o_OpenSession = CallbackOpen;
         }
 
         private void CloseSession(object sender, EventArgs e)
@@ -193,12 +195,20 @@ namespace User.Action
                         string s_NewPath = Projecthandler.Files.GetSessionPath(Projecthandler.Files.i_LoadedSession)+ Checker.ExtractFileName(s_File);
                         if (File.Exists(s_File) && !File.Exists(s_NewPath))
                         {
-                            File.Copy(s_File, s_NewPath);
+                            File.Copy(s_File, s_NewPath, true);
                             ImageList o_List = e_disp_content.LargeImageList;
                             ListViewItem o_Item = new ListViewItem(Checker.ExtractFileName(s_File), e_disp_content.Items.Count);
                             e_disp_content.Items.Add(o_Item);
                             o_List.Images.Add(Icon.ExtractAssociatedIcon(s_NewPath));
                         }
+                        else if (Notify.Ask("File Error", "Sorry, the file '"+ Checker.ExtractFileName(s_File) + "' already exists. Do you want to replace it?"))
+                        {
+                            File.Copy(s_File, s_NewPath, true);
+
+                        }
+                        else continue;
+
+
                     }
                 }
             }
@@ -223,6 +233,15 @@ namespace User.Action
                     Notify.Say("Invalid Name", "Sorry, but the charakters '][}:=#' are not allowed to be used in the session name.");
                 }
 
+            }
+        }
+
+        private void OpenSession(object sender, EventArgs e)
+        {
+            if (Router.i_CurrentProject != -1 && Projecthandler.s_Subjects.o_Content != null)
+            {
+                Win.o_Open.UpdateView();
+                Win.o_Open.Show();
             }
         }
     }
