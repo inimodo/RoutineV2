@@ -29,30 +29,33 @@ namespace User.Action
 
         public void UpdateView()
         {
-            e_list.Nodes.Clear();
-            ImageList o_IconList = new ImageList();
-            e_list.ImageList = o_IconList;
-            o_IconList.Images.Add(global::User.Properties.Resources.folder);
-            for (int i_Index = 0; i_Index < Projecthandler.s_Subjects.o_Content.Length; i_Index++)
+            if (Projecthandler.s_Subjects.o_Content != null && Projecthandler.Files.o_Sessions.o_Content != null)
             {
-                TreeNode o_Subject = new TreeNode(Projecthandler.s_Subjects.o_Content[i_Index]);
-                o_Subject.SelectedImageIndex = 0;
-                o_Subject.ImageIndex = 0;
-                o_Subject.ForeColor = Stylesource.o_headercolor;
-                for (int i_Sub = 0; i_Sub < Projecthandler.Files.o_Sessions.o_Content.Length; i_Sub++)
+                e_list.Nodes.Clear();
+                ImageList o_IconList = new ImageList();
+                e_list.ImageList = o_IconList;
+                o_IconList.Images.Add(global::User.Properties.Resources.folder);
+                for (int i_Index = 0; i_Index < Projecthandler.s_Subjects.o_Content.Length; i_Index++)
                 {
-                    if (Projecthandler.Files.o_Sessions.o_Content[i_Sub].s_Subject == Projecthandler.s_Subjects.o_Content[i_Index])
+                    TreeNode o_Subject = new TreeNode(Projecthandler.s_Subjects.o_Content[i_Index]);
+                    o_Subject.SelectedImageIndex = 0;
+                    o_Subject.ImageIndex = 0;
+                    o_Subject.ForeColor = Stylesource.o_headercolor;
+                    for (int i_Sub = 0; i_Sub < Projecthandler.Files.o_Sessions.o_Content.Length; i_Sub++)
                     {
-                        TreeNode o_Session = new TreeNode(Projecthandler.Files.o_Sessions.o_Content[i_Sub].s_Name);
-                        o_IconList.Images.Add(global::User.Properties.Resources.create);
-                        o_Session.SelectedImageIndex = i_Sub+1;
-                        o_Session.ImageIndex = i_Sub+1;
-                        o_Subject.Nodes.Add(o_Session);
+                        if (Projecthandler.Files.o_Sessions.o_Content[i_Sub].s_Subject == Projecthandler.s_Subjects.o_Content[i_Index])
+                        {
+                            TreeNode o_Session = new TreeNode(Projecthandler.Files.o_Sessions.o_Content[i_Sub].s_Name);
+                            o_IconList.Images.Add(global::User.Properties.Resources.create);
+                            o_Session.SelectedImageIndex = i_Sub + 1;
+                            o_Session.ImageIndex = i_Sub + 1;
+                            o_Subject.Nodes.Add(o_Session);
 
+                        }
                     }
-                }
-                e_list.Nodes.Add(o_Subject);
+                    e_list.Nodes.Add(o_Subject);
 
+                }
             }
         }
 

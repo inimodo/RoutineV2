@@ -257,6 +257,12 @@
     <None Include="resources\help.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="icons\calendar_hover.png" />
+    <None Include="icons\create_hover.png" />
+    <None Include="icons\homework_hover.png" />
+    <None Include="icons\settings_hover.png" />
+    <None Include="icons\settings2_hover.png" />
+    <None Include="icons\share_hover.png" />
     <Content Include="resources\ico.ico" />
     <None Include="icons\books.png" />
     <Content Include="icons\calendar.png" />

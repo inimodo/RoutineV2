@@ -31,30 +31,38 @@ namespace User.Source
             Directory.CreateDirectory(s_Path+@"\Deadlines");
             Directory.CreateDirectory(s_Path+@"\Template");
         }
-        public static void Save()
+        public static bool Save()
         {
             string s_Path;
             if (Router.GetCurrentDir(out s_Path))
             {
+                if (!File.Exists(s_Path + "config.ufg")) return false;
                 using (UniversalConfigReader o_Reader = new UniversalConfigReader(s_Path + "config.ufg"))
                 {
                     o_Reader.SetArray<string>("DATA", "SUBJECTS", s_Subjects.o_Content);
                     o_Reader.SaveConfig();
                 }
+                return true;
+
             }
+            return false;
+
         }
-        public static void Load()
+        public static bool Load()
         {
             string s_Path;
             if (Router.GetCurrentDir(out s_Path))
             {
+                if (!File.Exists(s_Path + "config.ufg")) return false;
                 using (UniversalConfigReader o_Reader = new UniversalConfigReader(s_Path + "config.ufg"))
                 {
                     o_Reader.LoadConfig();//NOTICE
-                    s_Subjects.o_Content = o_Reader.GetAsStringArray("DATA", "SUBJECTS",typeof(string));
-                    s_Name = o_Reader.GetRawValue("DATA", "NAME",typeof(string));
+                    s_Subjects.o_Content = o_Reader.GetAsStringArray("DATA", "SUBJECTS", typeof(string));
+                    s_Name = o_Reader.GetRawValue("DATA", "NAME", typeof(string));
                 }
+                return true;
             }
+            return false;
         }
         public static class Files
         {

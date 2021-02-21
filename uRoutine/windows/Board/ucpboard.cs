@@ -38,12 +38,13 @@ namespace User.Action
         {
             InitializeComponent();
             Winstyle.Apply(this, new Size(390, 235), "Routine");
+            Console.WriteLine("PING");
             Router.LoadData();
-            Projecthandler.Load();
-            Projecthandler.Files.FetchAll();
-            Projecthandler.Templates.LoadTemplates();
+            CallbackLoadProject();
+
             Win.o_Create.o_OpenSession = CallbackOpen;
             Win.o_Open.o_OpenSession = CallbackOpen;
+            Win.o_Settings.o_LoadProject = CallbackLoadProject;
         }
 
         private void CloseSession(object sender, EventArgs e)
@@ -57,7 +58,21 @@ namespace User.Action
             }
             else this.Close();
         }
-
+        public void CallbackLoadProject()
+        {
+            if (Projecthandler.Load())
+            {
+                Projecthandler.Files.FetchAll();
+                Projecthandler.Templates.LoadTemplates();
+            }
+            else if(Router.i_CurrentProject != -1)
+            {
+                Notify.Say("Error", "The currently sellected project was unable to be used!");
+                Router.i_CurrentProject = -1;
+                Router.SaveData();
+            }
+            
+        }
         public void CallbackOpen(int i_SessionIndex)
         {
             Data.b_OpenedSession = true;
@@ -70,17 +85,20 @@ namespace User.Action
         public void UpdateDisplayedContent()
         {
             this.e_nav_topic.Text = Projecthandler.Files.o_Sessions.o_Content[Projecthandler.Files.i_LoadedSession].s_Name;
-            string[] s_FoundFiles = Directory.GetFiles(Projecthandler.Files.GetSessionPath(Projecthandler.Files.i_LoadedSession));
-            Console.WriteLine();
-            ImageList o_list = new ImageList();
-            e_disp_content.Items.Clear();
-            for (int i_index = 0; i_index < s_FoundFiles.Length; i_index++)
+            if (Directory.Exists(Projecthandler.Files.GetSessionPath(Projecthandler.Files.i_LoadedSession)))
             {
-                ListViewItem o_Item = new ListViewItem(Checker.ExtractFileName(s_FoundFiles[i_index]),i_index);
-                e_disp_content.Items.Add(o_Item);
-                o_list.Images.Add(Icon.ExtractAssociatedIcon(s_FoundFiles[i_index]));
-            }
-            e_disp_content.LargeImageList = o_list;
+                string[] s_FoundFiles = Directory.GetFiles(Projecthandler.Files.GetSessionPath(Projecthandler.Files.i_LoadedSession));
+                Console.WriteLine();
+                ImageList o_list = new ImageList();
+                e_disp_content.Items.Clear();
+                for (int i_index = 0; i_index < s_FoundFiles.Length; i_index++)
+                {
+                    ListViewItem o_Item = new ListViewItem(Checker.ExtractFileName(s_FoundFiles[i_index]), i_index);
+                    e_disp_content.Items.Add(o_Item);
+                    o_list.Images.Add(Icon.ExtractAssociatedIcon(s_FoundFiles[i_index]));
+                }
+                e_disp_content.LargeImageList = o_list;
+            }else Directory.CreateDirectory(Projecthandler.Files.GetSessionPath(Projecthandler.Files.i_LoadedSession));
         }
 
         public void UpdateWindowState()
@@ -112,6 +130,7 @@ namespace User.Action
 
         private void OpenSettings(object sender, EventArgs e)
         {
+            Win.o_Settings.UpdateView();
             Win.o_Settings.Show();
         }
 
@@ -238,11 +257,52 @@ namespace User.Action
 
         private void OpenSession(object sender, EventArgs e)
         {
-            if (Router.i_CurrentProject != -1 && Projecthandler.s_Subjects.o_Content != null)
+            if (Router.i_CurrentProject != -1 && Projecthandler.s_Subjects.o_Content != null && Projecthandler.Files.o_Sessions.o_Content != null)
+
             {
                 Win.o_Open.UpdateView();
                 Win.o_Open.Show();
             }
+        }
+
+        private void KeyCatch(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+
+                if (e_disp_content.SelectedItems.Count > 0)
+                {
+                    string s_BuildPath = Projecthandler.Files.GetSessionPath(Projecthandler.Files.i_LoadedSession) + e_disp_content.SelectedItems[0].Text;
+                    if (Notify.Ask("Delete", "Are you Sure you want to delete '" + e_disp_content.SelectedItems[0].Text + "' ?"))
+                    {
+                        if (File.Exists(s_BuildPath)) File.Delete(s_BuildPath);
+                        UpdateDisplayedContent();
+                    }
+                    e.SuppressKeyPress = true;
+                    e.Handled = true;
+                }
+
+            }
+        }
+
+        private void IconHover(object sender, EventArgs e)
+        {
+            if(sender.Equals(this.e_ico_all))this.e_ico_all.Image = global::User.Properties.Resources.homework_hover;
+            if(sender.Equals(this.e_ico_appointments))this.e_ico_appointments.Image = global::User.Properties.Resources.calendar_hover;
+            if(sender.Equals(this.e_ico_create))this.e_ico_create.Image = global::User.Properties.Resources.create_hover;
+            if(sender.Equals(this.e_ico_general))this.e_ico_general.Image = global::User.Properties.Resources.settings_hover;
+            if(sender.Equals(this.e_ico_manger))this.e_ico_manger.Image = global::User.Properties.Resources.settings2_hover;
+            if(sender.Equals(this.e_ico_share))this.e_ico_share.Image = global::User.Properties.Resources.share_hover;
+        }
+
+        private void IconLeave(object sender, EventArgs e)
+        {
+            this.e_ico_all.Image = global::User.Properties.Resources.homework;
+            this.e_ico_appointments.Image = global::User.Properties.Resources.calendar;
+            this.e_ico_create.Image = global::User.Properties.Resources.create;
+            this.e_ico_general.Image = global::User.Properties.Resources.settings;
+            this.e_ico_manger.Image = global::User.Properties.Resources.settings2;
+            this.e_ico_share.Image = global::User.Properties.Resources.share;
         }
     }
 }

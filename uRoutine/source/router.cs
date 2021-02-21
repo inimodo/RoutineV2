@@ -27,6 +27,8 @@ namespace User.Source
                     s_ProjectFiles.o_Content = o_Reader.GetAsStringArray("ROUTER", "LINK", typeof(string));
                     i_CurrentProject = o_Reader.GetValue<int>("ROUTER", "CURRENT");
                 }
+                string s_None;
+                if (GetCurrentDir(out s_None)){}
             }
             else
             {
@@ -65,8 +67,14 @@ namespace User.Source
         public static bool GetCurrentDir(out  string s_Dir)
         {
             s_Dir = null;
-            if (i_CurrentProject == -1) return false;
-            if (s_ProjectFiles.o_Content[i_CurrentProject] == null) return false;
+            if ((i_CurrentProject == -1) || 
+                (s_ProjectFiles.o_Content[i_CurrentProject] == null) || 
+                (!Directory.Exists(s_ProjectFiles.o_Content[i_CurrentProject])))
+            {
+                i_CurrentProject = -1;
+                SaveData();
+                return false;
+            }
             s_Dir=s_ProjectFiles.o_Content[i_CurrentProject]+@"\";
             return true;
         }

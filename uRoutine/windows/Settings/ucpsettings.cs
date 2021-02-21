@@ -17,6 +17,8 @@ namespace User.Action
 
     public partial class ucpsettings : Form
     {
+        public delegate void LoadProject();
+        public LoadProject o_LoadProject;
         Winstyle.Windrag o_Drag;
         public ucpsettings()
         { 
@@ -24,7 +26,6 @@ namespace User.Action
             Winstyle.Apply(this, new Size(520, 195),"Years");
             o_Drag = new Winstyle.Windrag(this);
             UpdateView();
-
         }
 
         private void CreateNewYear(object sender, EventArgs e)
@@ -54,6 +55,7 @@ namespace User.Action
             if (s_Path != null && s_Name != null)
             {
                 Router.s_ProjectFiles.Add(s_Path);
+                Router.i_CurrentProject = Router.s_ProjectFiles.o_Content.Length - 1;
                 Router.SaveData();
                 Projecthandler.Create(s_Path,s_Name);
             }
@@ -64,6 +66,7 @@ namespace User.Action
 
         public void UpdateView()
         {
+            Console.WriteLine(Router.s_ProjectFiles.o_Content==null);
             if (Router.s_ProjectFiles.o_Content != null)
             {
                 ImageList o_list = new ImageList();
@@ -73,6 +76,8 @@ namespace User.Action
                 {
                     ListViewItem o_Item = new ListViewItem(Router.s_ProjectFiles.o_Content[i_index],i_index);
                     if (i_index != Router.i_CurrentProject) o_Item.ForeColor = Stylesource.o_text_light;
+                    if(!Directory.Exists(Router.s_ProjectFiles.o_Content[i_index])) o_Item.ForeColor = Stylesource.o_headercolor;
+
                     e_disp_subjects.Items.Add(o_Item);
                     o_list.Images.Add(User.Properties.Resources.folder);
 
@@ -96,11 +101,18 @@ namespace User.Action
         {
             if (e_disp_subjects.SelectedItems.Count > 0)
             {
-                Router.i_CurrentProject = e_disp_subjects.SelectedItems[0].ImageIndex;
-                Router.SaveData();
-                Projecthandler.Load();
+                if (Directory.Exists(Router.s_ProjectFiles.o_Content[e_disp_subjects.SelectedItems[0].ImageIndex]))
+                {
+                    Router.i_CurrentProject = e_disp_subjects.SelectedItems[0].ImageIndex;
+                    Router.SaveData();
+                    o_LoadProject();
+                    UpdateView();
+                } else
+                {
+                    Notify.Say("Error", "The Folder does not exist an thus cannot be sellectet as Project!");
+                }
 
-                UpdateView();
+
             }
         }
 
